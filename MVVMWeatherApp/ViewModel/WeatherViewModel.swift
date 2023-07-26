@@ -31,8 +31,11 @@ class WeatherViewModel {
         }
     }
     
-    func getDay(dt:Int64) -> String{
-        return "Salı"
+    func getDay(dt:TimeInterval) -> String {
+        let date = Date(timeIntervalSince1970: dt)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: date)
     }
     
     func getIcon(icon:String)->String{

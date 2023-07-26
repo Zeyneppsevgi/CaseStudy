@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var dereceLabel: UILabel!
@@ -30,7 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             DispatchQueue.main.async {
                 self.imageView.load(url: URL(string : self.weatherViewModel.getIcon(icon: weather.current.weather[0].icon))!)
                 self.cityNameLabel.text = weather.timezone
-                self.dereceLabel.text="\(weather.current.temp)"
+                self.dereceLabel.text="\(Int(weather.current.temp - 273.15))"
                 self.tableView.reloadData()
             }
         }
@@ -46,9 +47,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as! WeatherTableViewCell
         if  weatherViewModel.dailyWeather != nil {
             let dt = weatherViewModel.dailyWeather![indexPath.row].dt
-            cell.dayLabel.text = weatherViewModel.getDay(dt: dt)
-            cell.tempGeceLabel.text = "\(weatherViewModel.dailyWeather![indexPath.row].temp.night)"
-            cell.tempGunduzLabel.text = "\(weatherViewModel.dailyWeather![indexPath.row].temp.day)"
+            cell.dayLabel.text = "\(weatherViewModel.getDay(dt: TimeInterval(dt)))"
+            cell.tempGeceLabel.text = "\(Int(weatherViewModel.dailyWeather![indexPath.row].temp.night - 273.15))"
+            cell.tempGunduzLabel.text = "\(Int(weatherViewModel.dailyWeather![indexPath.row].temp.day - 273.15))"
             let icon = weatherViewModel.dailyWeather![indexPath.row].weather[0].icon
             cell.imageViewIcon.load(url: URL(string : weatherViewModel.getIcon(icon: icon))!)
         }
