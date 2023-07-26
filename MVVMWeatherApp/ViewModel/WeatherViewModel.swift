@@ -13,10 +13,10 @@ class WeatherViewModel {
     func fetchWeather(lat:Double, lon:Double, apiKey:String, competion: @escaping(WeatherResponse) -> ()){
         Webservice().fetchWeather(lat:lat, lon:lon, apiKey: apiKey) {(weather) in
             
-         //   if let weather {
-              //  self.dailyWeather = weather.daily[1 ... weather.daily.count!]
-               // competion(weather)
-           // }
+            //   if let weather {
+            //  self.dailyWeather = weather.daily[1 ... weather.daily.count!]
+            // competion(weather)
+            // }
             if let weather {
                 if weather.daily.count > 1 {
                     let startIndex = 1
@@ -27,7 +27,7 @@ class WeatherViewModel {
                     
                 }
             }
-
+            
         }
     }
     
@@ -35,13 +35,13 @@ class WeatherViewModel {
         return "Salı"
     }
     
-  }
-       
-    
-    
     func getIcon(icon:String)->String{
         return "https://openweathermap.org/img/wn/\(icon)@2x.png"
     }
+    
+}
+
+
 
 
 

@@ -17,6 +17,7 @@
 		7013FCC62A6FF6D700537250 /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7013FCC52A6FF6D700537250 /* WeatherResponse.swift */; };
 		7013FCC82A70025000537250 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7013FCC72A70025000537250 /* Webservice.swift */; };
 		7013FCCA2A70483400537250 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7013FCC92A70483400537250 /* WeatherViewModel.swift */; };
+		707090392A70F71B00217D88 /* ApiKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707090382A70F71B00217D88 /* ApiKeyViewController.swift */; };
 		70E1FE962A706C620054CF69 /* UIImageViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E1FE952A706C620054CF69 /* UIImageViewExt.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		7013FCC52A6FF6D700537250 /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
 		7013FCC72A70025000537250 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 		7013FCC92A70483400537250 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		707090382A70F71B00217D88 /* ApiKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyViewController.swift; sourceTree = "<group>"; };
 		70E1FE952A706C620054CF69 /* UIImageViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 				7013FCAF2A6FED5D00537250 /* ViewController.swift */,
 				7013FCAD2A6FED5D00537250 /* SceneDelegate.swift */,
 				7013FCAB2A6FED5D00537250 /* AppDelegate.swift */,
+				707090382A70F71B00217D88 /* ApiKeyViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7013FCC62A6FF6D700537250 /* WeatherResponse.swift in Sources */,
+				707090392A70F71B00217D88 /* ApiKeyViewController.swift in Sources */,
 				7013FCC02A6FF1FE00537250 /* WeatherTableViewCell.swift in Sources */,
 				7013FCC82A70025000537250 /* Webservice.swift in Sources */,
 				7013FCCA2A70483400537250 /* WeatherViewModel.swift in Sources */,
