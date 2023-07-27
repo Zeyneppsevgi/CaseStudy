@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 
 class WeatherViewModel {
@@ -13,10 +14,6 @@ class WeatherViewModel {
     func fetchWeather(lat:Double, lon:Double, apiKey:String, competion: @escaping(WeatherResponse) -> ()){
         Webservice().fetchWeather(lat:lat, lon:lon, apiKey: apiKey) {(weather) in
             
-            //   if let weather {
-            //  self.dailyWeather = weather.daily[1 ... weather.daily.count!]
-            // competion(weather)
-            // }
             if let weather {
                 if weather.daily.count > 1 {
                     let startIndex = 1
@@ -42,7 +39,31 @@ class WeatherViewModel {
         return "https://openweathermap.org/img/wn/\(icon)@2x.png"
     }
     
+    
+    func getLocation(lat: Double , lon:Double, _ completion:  @escaping(_ success: Bool, _ address: String?) -> Void) -> Void {
+        let ceo: CLGeocoder = CLGeocoder()
+
+        let loc: CLLocation = CLLocation(latitude: lat, longitude: lon)
+        ceo.reverseGeocodeLocation(loc , completionHandler: { (placemarks,error) in
+            if(error != nil) {
+                print("error")
+            }
+            
+            let pm = placemarks! as [CLPlacemark]
+            var address : String = ""
+            if pm.count > 0 {
+                let pm = placemarks![0]
+                address = "\(pm.administrativeArea ?? "xx"), \(pm.isoCountryCode ?? "yy")"
+                completion(true, address)
+            }else {
+                completion(false,nil)
+            }
+        })
+    }
 }
+
+
+
 
 
 

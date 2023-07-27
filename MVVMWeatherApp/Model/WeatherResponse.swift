@@ -8,6 +8,8 @@
 import Foundation
 
 struct WeatherResponse : Codable {
+    let lat: Double
+    let lon: Double
     let timezone:String
     let current:Current
     let daily: [Daily]

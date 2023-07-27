@@ -18,6 +18,7 @@
 		7013FCC82A70025000537250 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7013FCC72A70025000537250 /* Webservice.swift */; };
 		7013FCCA2A70483400537250 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7013FCC92A70483400537250 /* WeatherViewModel.swift */; };
 		707090392A70F71B00217D88 /* ApiKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707090382A70F71B00217D88 /* ApiKeyViewController.swift */; };
+		7070903D2A7104ED00217D88 /* wallpaper2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7070903C2A7104ED00217D88 /* wallpaper2.jpeg */; };
 		70E1FE962A706C620054CF69 /* UIImageViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E1FE952A706C620054CF69 /* UIImageViewExt.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		7013FCC72A70025000537250 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 		7013FCC92A70483400537250 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		707090382A70F71B00217D88 /* ApiKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyViewController.swift; sourceTree = "<group>"; };
+		7070903C2A7104ED00217D88 /* wallpaper2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wallpaper2.jpeg; sourceTree = "<group>"; };
 		70E1FE952A706C620054CF69 /* UIImageViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +78,7 @@
 				7013FCB42A6FED5E00537250 /* Assets.xcassets */,
 				7013FCB62A6FED5E00537250 /* LaunchScreen.storyboard */,
 				7013FCB92A6FED5E00537250 /* Info.plist */,
+				7070903C2A7104ED00217D88 /* wallpaper2.jpeg */,
 			);
 			path = MVVMWeatherApp;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 			files = (
 				7013FCB82A6FED5E00537250 /* LaunchScreen.storyboard in Resources */,
 				7013FCB52A6FED5E00537250 /* Assets.xcassets in Resources */,
+				7070903D2A7104ED00217D88 /* wallpaper2.jpeg in Resources */,
 				7013FCB32A6FED5D00537250 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
