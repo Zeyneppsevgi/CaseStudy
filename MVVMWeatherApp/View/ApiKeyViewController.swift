@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 
 protocol ApiKeyViewControllerDelegate: AnyObject {
@@ -14,9 +15,14 @@ protocol ApiKeyViewControllerDelegate: AnyObject {
 }
 
 class ApiKeyViewController: UIViewController{
+    
+    var lat : Double = 0.0
+    var lon : Double = 0.0
+    let apiKey = "5a8907ac912c11c65ef98997c5f71c97"
    
     
-
+    @IBOutlet weak var mapView: MKMapView!
+    
     weak var delegate: ApiKeyViewControllerDelegate?
     let locaitonManager = CLLocationManager()
     
@@ -24,19 +30,42 @@ class ApiKeyViewController: UIViewController{
         super.viewDidLoad()
         locaitonManager.delegate = self
         locaitonManager.requestWhenInUseAuthorization()
+        locaitonManager.desiredAccuracy = kCLLocationAccuracyBest
+        locaitonManager.startUpdatingLocation()
         locaitonManager.requestLocation()
         
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(getLongPress(gestureRecognizer: )))
+        gestureRecognizer.minimumPressDuration = 1
+        mapView.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    @objc func getLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        if gestureRecognizer.state == .began {
+            let touchedPoint = gestureRecognizer.location(in: mapView)
+            let convertTouchedPoint = mapView.convert(touchedPoint, toCoordinateFrom: mapView)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = convertTouchedPoint
+            mapView.addAnnotation(annotation)
+            
+            annotation.title = "The place you choose"
+            annotation.subtitle = "Go to this location"
+            
+            lat = annotation.coordinate.latitude
+            lon = annotation.coordinate.longitude
+            delegate?.didLatWithLon(lat, lon: lon, apiKey: apiKey)
+        }
+             
     }
     
     @IBAction func enterPressed(_ sender: Any) {
         if let location = locaitonManager.location {
-               let lat = location.coordinate.latitude
-               let lon = location.coordinate.longitude
-               let apiKey = "5a8907ac912c11c65ef98997c5f71c97"
+//               let lat = location.coordinate.latitude
+//               let lon = location.coordinate.longitude
 
-               // Delegate aracılığıyla konum verilerini diğer sayfaya iletiyoruz
-               delegate?.didLatWithLon(lat, lon: lon, apiKey: apiKey)
-            performRegistration(lat: lat, lon: lon)
+                // Delegate aracılığıyla konum verilerini diğer sayfaya iletiyoruz
+                delegate?.didLatWithLon(lat, lon: lon, apiKey: apiKey)
+                performRegistration(lat: lat, lon: lon)
            } else {
                print("Konum bilgisi bulunamadı.")
            }
@@ -48,7 +77,6 @@ class ApiKeyViewController: UIViewController{
         apiVC.latitude = lat
         apiVC.longitude = lon
         
-        
         navigationController?.pushViewController(apiVC, animated: true)
     }
 
@@ -57,15 +85,19 @@ class ApiKeyViewController: UIViewController{
    
 
 }
-extension ApiKeyViewController: CLLocationManagerDelegate {
+extension ApiKeyViewController: CLLocationManagerDelegate ,MKMapViewDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-            let lat = location.coordinate.latitude
-            let lon = location.coordinate.longitude
-            
-            
-        }
+        let location = CLLocationCoordinate2D.init(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
+//        if let location = locations.last {
+//            let lat = location.coordinate.latitude
+//            let lon = location.coordinate.longitude
+//        }
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion(center: location, span: span)
+        mapView.setRegion(region, animated: true)
     }
+  
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error.localizedDescription)
     }
