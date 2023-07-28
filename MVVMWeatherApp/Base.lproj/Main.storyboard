@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,8 +20,25 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallpaper2.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="eUY-ga-Fy2">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="API KEY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNB-bu-AWT">
+                                <rect key="frame" x="69" y="158" width="254" height="64"/>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="YCp-99-E7g"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2AZ-W6-dkd">
+                                <rect key="frame" x="0.0" y="349" width="393" height="469"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52m-kI-U3s">
-                                <rect key="frame" x="69" y="456" width="254" height="64"/>
+                                <rect key="frame" x="69" y="248" width="254" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="mgb-lQ-npo"/>
+                                </constraints>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Enter"/>
@@ -28,34 +46,30 @@
                                     <action selector="enterPressed:" destination="YiO-XS-byb" eventType="touchUpInside" id="jKI-ir-9v7"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="API KEY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNB-bu-AWT">
-                                <rect key="frame" x="69" y="361" width="254" height="64"/>
-                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="duX-EI-jCO"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="i9j-Im-rXg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="PNB-bu-AWT" firstAttribute="centerX" secondItem="MP4-7E-FIc" secondAttribute="centerX" id="4hJ-ab-a2h"/>
-                            <constraint firstItem="PNB-bu-AWT" firstAttribute="leading" secondItem="i9j-Im-rXg" secondAttribute="leading" constant="69" id="BCN-bU-YkB"/>
-                            <constraint firstItem="PNB-bu-AWT" firstAttribute="leading" secondItem="52m-kI-U3s" secondAttribute="leading" id="GCD-nA-7MC"/>
-                            <constraint firstItem="PNB-bu-AWT" firstAttribute="trailing" secondItem="52m-kI-U3s" secondAttribute="trailing" id="OZx-YI-kgn"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="eUY-ga-Fy2" secondAttribute="bottom" constant="-34" id="WwW-QL-djx"/>
-                            <constraint firstItem="eUY-ga-Fy2" firstAttribute="centerY" secondItem="MP4-7E-FIc" secondAttribute="centerY" id="bfX-K0-g6S"/>
-                            <constraint firstItem="i9j-Im-rXg" firstAttribute="bottom" secondItem="52m-kI-U3s" secondAttribute="bottom" constant="298" id="fV9-dc-S3D"/>
-                            <constraint firstItem="eUY-ga-Fy2" firstAttribute="centerX" secondItem="PNB-bu-AWT" secondAttribute="centerX" id="h5P-pe-zAh"/>
-                            <constraint firstItem="PNB-bu-AWT" firstAttribute="top" secondItem="i9j-Im-rXg" secondAttribute="top" constant="258" id="hGI-h9-LyY"/>
-                            <constraint firstItem="eUY-ga-Fy2" firstAttribute="leading" secondItem="i9j-Im-rXg" secondAttribute="leading" id="rTc-vF-vm5"/>
-                            <constraint firstItem="52m-kI-U3s" firstAttribute="top" secondItem="PNB-bu-AWT" secondAttribute="bottom" constant="31" id="rzw-i6-adI"/>
+                            <constraint firstItem="2AZ-W6-dkd" firstAttribute="bottom" secondItem="i9j-Im-rXg" secondAttribute="bottom" id="7Ao-7n-01j"/>
+                            <constraint firstItem="eUY-ga-Fy2" firstAttribute="centerY" secondItem="MP4-7E-FIc" secondAttribute="centerY" id="9vJ-MQ-IY3"/>
+                            <constraint firstItem="PNB-bu-AWT" firstAttribute="centerX" secondItem="MP4-7E-FIc" secondAttribute="centerX" id="B7A-ml-oWC"/>
+                            <constraint firstItem="PNB-bu-AWT" firstAttribute="top" secondItem="i9j-Im-rXg" secondAttribute="top" constant="55" id="C4d-y3-RiA"/>
+                            <constraint firstItem="eUY-ga-Fy2" firstAttribute="trailing" secondItem="2AZ-W6-dkd" secondAttribute="trailing" id="EOe-FC-ZWW"/>
+                            <constraint firstItem="PNB-bu-AWT" firstAttribute="leading" secondItem="52m-kI-U3s" secondAttribute="leading" id="OMO-Zc-xdH"/>
+                            <constraint firstItem="52m-kI-U3s" firstAttribute="top" secondItem="PNB-bu-AWT" secondAttribute="bottom" constant="26" id="ROm-6C-N7x"/>
+                            <constraint firstItem="PNB-bu-AWT" firstAttribute="leading" secondItem="i9j-Im-rXg" secondAttribute="leading" constant="69" id="Tku-pR-hT4"/>
+                            <constraint firstItem="2AZ-W6-dkd" firstAttribute="top" secondItem="52m-kI-U3s" secondAttribute="bottom" constant="37" id="WU4-7R-4jv"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="eUY-ga-Fy2" secondAttribute="bottom" constant="-34" id="bDB-eI-PyO"/>
+                            <constraint firstItem="2AZ-W6-dkd" firstAttribute="leading" secondItem="i9j-Im-rXg" secondAttribute="leading" id="mND-3i-PgR"/>
+                            <constraint firstItem="eUY-ga-Fy2" firstAttribute="leading" secondItem="2AZ-W6-dkd" secondAttribute="leading" id="w0V-vr-VXI"/>
+                            <constraint firstItem="52m-kI-U3s" firstAttribute="centerX" secondItem="2AZ-W6-dkd" secondAttribute="centerX" id="xtb-55-L6A"/>
+                            <constraint firstItem="PNB-bu-AWT" firstAttribute="trailing" secondItem="52m-kI-U3s" secondAttribute="trailing" id="y2Q-MX-mTF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Weather App" id="WGA-JV-0cl"/>
+                    <connections>
+                        <outlet property="mapView" destination="2AZ-W6-dkd" id="PRg-Fn-eaN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GBv-A4-SzP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -211,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1150.3816793893129" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="1240" y="4"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sFR-u1-KHh">
