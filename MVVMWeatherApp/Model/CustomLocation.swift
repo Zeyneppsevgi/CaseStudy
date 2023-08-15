@@ -8,6 +8,6 @@
 import Foundation
 
 struct CustomLocation : Codable {
-    let lat: Double
-    let lon: Double
+   // let lat: Double
+   // let lon: Double
 }

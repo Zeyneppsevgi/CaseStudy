@@ -19,7 +19,7 @@ class ApiKeyViewController: UIViewController{
     var lat : Double = 0.0
     var lon : Double = 0.0
     let apiKey = "5a8907ac912c11c65ef98997c5f71c97"
-   
+    var currentPinAnnotation: MKPointAnnotation?
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -37,12 +37,18 @@ class ApiKeyViewController: UIViewController{
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(getLongPress(gestureRecognizer: )))
         gestureRecognizer.minimumPressDuration = 1
         mapView.addGestureRecognizer(gestureRecognizer)
-    }
-    
+        
+       
+            }
+  
     @objc func getLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
             let touchedPoint = gestureRecognizer.location(in: mapView)
             let convertTouchedPoint = mapView.convert(touchedPoint, toCoordinateFrom: mapView)
+            
+            if let existingPin = currentPinAnnotation {
+                        mapView.removeAnnotation(existingPin)
+                    }
             
             let annotation = MKPointAnnotation()
             annotation.coordinate = convertTouchedPoint
@@ -53,10 +59,12 @@ class ApiKeyViewController: UIViewController{
             
             lat = annotation.coordinate.latitude
             lon = annotation.coordinate.longitude
+            currentPinAnnotation = annotation
             delegate?.didLatWithLon(lat, lon: lon, apiKey: apiKey)
         }
              
     }
+   
     
     @IBAction func enterPressed(_ sender: Any) {
         if let location = locaitonManager.location {
@@ -80,18 +88,10 @@ class ApiKeyViewController: UIViewController{
         navigationController?.pushViewController(apiVC, animated: true)
     }
 
-  
-    
-   
-
 }
 extension ApiKeyViewController: CLLocationManagerDelegate ,MKMapViewDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = CLLocationCoordinate2D.init(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
-//        if let location = locations.last {
-//            let lat = location.coordinate.latitude
-//            let lon = location.coordinate.longitude
-//        }
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)

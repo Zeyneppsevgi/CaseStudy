@@ -53,7 +53,7 @@ class WeatherViewModel {
             var address : String = ""
             if pm.count > 0 {
                 let pm = placemarks![0]
-                address = "\(pm.administrativeArea ?? "xx"), \(pm.isoCountryCode ?? "yy")"
+                address = "\(pm.administrativeArea ?? "..."), \(pm.isoCountryCode ?? "...")"
                 completion(true, address)
             }else {
                 completion(false,nil)
